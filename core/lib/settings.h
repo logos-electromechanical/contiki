@@ -110,6 +110,11 @@
 #include "dev/eeprom.h"
 #include "sys/cc.h"
 
+/* Make sure CC_INLINE is defined for platforms that don't otherwise define it */
+#ifndef CC_INLINE
+#define CC_INLINE inline
+#endif
+
 /*****************************************************************************/
 // MARK: - Types
 
