@@ -9,7 +9,7 @@ CONTIKI_TARGET_SOURCEFILES += button-sensor.c sensors.c slip_uart0.c slip.c
 CONTIKIAVR=$(CONTIKI)/cpu/avr
 CONTIKIBOARD=.
 
-CONTIKI_PLAT_DEFS = -DF_CPU=16000000UL -DAUTO_CRC_PADDING=2
+CONTIKI_PLAT_DEFS = -DF_CPU=16000000UL -DAUTO_CRC_PADDING=2 -DUIP_CONF_IPV6=1
 
 MCU=atmega128rfa1
 
@@ -20,12 +20,13 @@ AVRDUDE_PROGRAMMER=arduino
 #
 # The example is for an JTAGICE mkII used to program an ATmega128:
 # avrdude -v -P usb:xxxx -c jtag2 -p atmega128
-AVRDUDE_PORT=usb
+# AVRDUDE_PORT=usb
 
 
 # Additional avrdude options
 # Verify off
 AVRDUDE_OPTIONS=-V
+AVRDUDE_MCU=m128rfa1
 
 
 include $(CONTIKIAVR)/Makefile.avr
