@@ -5,8 +5,8 @@ CONTIKI=../../..
 
 WITH_UIP6=1
 UIP_CONF_IPV6=1
-CFLAGS+= -DUIP_CONF_IPV6_RPL
-
+UIP_CONF_RPL=1
+WITH_SLIP=1
 #linker optimizations
 SMALL=1
 

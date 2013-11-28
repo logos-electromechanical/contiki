@@ -2,7 +2,7 @@ CONTIKI_TARGET_DIRS = . apps net loader
 
 CONTIKI_CORE=contiki-main
 CONTIKI_TARGET_MAIN = ${CONTIKI_CORE}.o
-CONTIKI_TARGET_SOURCEFILES += contiki-main.c params.c
+CONTIKI_TARGET_SOURCEFILES += contiki-main.c params.c cfs-eeprom.c
 #Needed for slip
 CONTIKI_TARGET_SOURCEFILES += button-sensor.c sensors.c slip_uart0.c slip.c
 
@@ -21,6 +21,11 @@ AVRDUDE_PROGRAMMER=jtag3isp
 # The example is for an JTAGICE mkII used to program an ATmega128:
 # avrdude -v -P usb:xxxx -c jtag2 -p atmega128
 AVRDUDE_PORT=usb
+
+ifeq ($(WITH_SLIP),1)
+CONTIKI_TARGET_SOURCEFILES += slip_uart0.c slip.c 
+CFLAGS += -DWITH_SLIP=$(WITH_SLIP) 
+endif
 
 ifeq ($(UIP_CONF_IPV6),1)
 CFLAGS += -DWITH_UIP6=1
