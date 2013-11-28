@@ -22,6 +22,22 @@ AVRDUDE_PROGRAMMER=jtag3isp
 # avrdude -v -P usb:xxxx -c jtag2 -p atmega128
 AVRDUDE_PORT=usb
 
+ifndef UIP_CONF_IPV6
+UIP_CONF_IPV6=1
+endif
+
+ifndef UIP_CONF_RPL
+UIP_CONF_RPL=1
+endif
+
+ifndef UIP_CONF_IPV6
+UIP_CONF_IPV6=1
+endif
+
+ifndef UIP_CONF_RPL
+UIP_CONF_RPL=1
+endif
+
 ifeq ($(WITH_SLIP),1)
 CONTIKI_TARGET_SOURCEFILES += slip_uart0.c slip.c 
 CFLAGS += -DWITH_SLIP=$(WITH_SLIP) 
